@@ -28,17 +28,17 @@ The goals / steps of this project are the following:
 ###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
-###Writeup / README
+### Writeup / README
 
-####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Vehicle-Detection/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
+#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Vehicle-Detection/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
 
 You're reading it!
 
-###Histogram of Oriented Gradients (HOG)
+### Histogram of Oriented Gradients (HOG)
 
-####1. Explain how (and identify where in your code) you extracted HOG features from the training images.
+#### 1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-The code for this step is contained in the first code cell of the IPython notebook (or in lines # through # of the file called `some_file.py`).  
+The code for this step is contained in lines 74 through 91 of the file called `obj_detect.py`).  
 
 I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
@@ -46,20 +46,88 @@ I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an 
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
 
-Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
+Here is an example using the `YUV` color space and HOG parameters of `orientations=9`, `pixels_per_cell=(16, 16)` and `cells_per_block=(2, 2)`:
 
 
 ![alt text][image2]
 
-####2. Explain how you settled on your final choice of HOG parameters.
+#### 2. Explain how you settled on your final choice of HOG parameters.
 
-I tried various combinations of parameters and...
+I tried various combinations of parameters and finally I found the parameter above used in YUV colorspace with all color channels. To reach high accuracy of the classifier as well as low prediction times in order to spend more computing for expensive sliding windows. 
+The tables below show several run with different parameters and feature vector sizes. The perfomance of the trained classifier was evaluated by metrics like precicion, recall and f1-score (sk.metrics).
 
-####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
+##Parameter 1
+Feature vector length: (17760, 2112)
+Using: 11 orientations 12 pixels per cell and 2 cells per block
+33.72 Seconds to train SVC...
+Test Accuracy of SVC =  0.9716
+             precision    recall  f1-score   support
 
-I trained a linear SVM using...
+   not cars     0.9771    0.9681    0.9726      1852
+       cars     0.9656    0.9753    0.9704      1700
 
-###Sliding Window Search
+avg / total     0.9716    0.9716    0.9716      3552
+
+
+##Parameter 2
+Feature vector length: (17760, 2112)
+Using: 11 orientations 8 pixels per cell and 1 cells per block
+37.28 Seconds to train SVC...
+Test Accuracy of SVC =  0.9727
+             precision    recall  f1-score   support
+
+   not cars     0.9724    0.9740    0.9732      1811
+       cars     0.9730    0.9713    0.9721      1741
+
+avg / total     0.9727    0.9727    0.9727      3552
+
+##Parameter 3 (video_1_hog_only)
+Number of HOG feature features 6468
+Feature vector length: (17760, 6468)
+Using: 11 orientations 8 pixels per cell and 2 cells per block
+### 114.05 Seconds to train SVC...
+### Test Accuracy of SVC =  0.9834
+             precision    recall  f1-score   support
+
+   not cars     0.9839    0.9833    0.9836      1798
+       cars     0.9829    0.9835    0.9832      1754
+
+avg / total     0.9834    0.9834    0.9834      3552
+
+
+
+##Parameter 4 (video_2)
+Number of spatial features 768
+Number of histogram features 96
+Number of HOG feature features 972
+Feature vector length: (17760, 1836)
+Using: 9 orientations 16 pixels per cell and 2 cells per block
+### 19.49 Seconds to train SVC...
+### Test Accuracy of SVC =  0.993
+             precision    recall  f1-score   support
+
+   not cars     0.9918    0.9945    0.9932      1830
+       cars     0.9942    0.9913    0.9927      1722
+
+avg / total     0.9930    0.9930    0.9930      3552
+
+
+Parameter 3 was found first but the prediction timer were very slow due to a high amount of features (HOG) that need to be calculated which also results in a complex SVM model. Using also histogram (32 bins) and color binned features (resize to (16,16)) a much faster classifier with even higher accuracy were established.
+
+
+#####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
+
+I trained a linear SVM using HOG, histogram and spatial features with hight accuracy and fast prediction rates. I've also trained a majority vote classifier based on three different classifier. The MVC was composed of a Logistic regression classifier, a linear SCM and an k-nearest-neightbor classifier. The performance can be seen in the following test images:
+
+The metric values might increase a little but on the other hand the system was approxemately two times slower than the single lin-SVM approach. 
+
+bild mit testbilder und 10fold
+
+The following image show the accuracy over amount of training used. It show that it could be possible to slightly increase the accuracy with more training data. Due to the small difference of performance on traing data and test date, I didn't recognize an overfitting problem at this point. 
+
+![alt text][image3]
+
+### Sliding Window Search
 
 ####1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
