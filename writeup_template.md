@@ -85,8 +85,8 @@ avg / total     0.9727    0.9727    0.9727      3552
 Number of HOG feature features 6468
 Feature vector length: (17760, 6468)
 Using: 11 orientations 8 pixels per cell and 2 cells per block
-## 114.05 Seconds to train SVC...
-## Test Accuracy of SVC =  0.9834
+#### 114.05 Seconds to train SVC...
+#### Test Accuracy of SVC =  0.9834
              precision    recall  f1-score   support
 
    not cars     0.9839    0.9833    0.9836      1798
@@ -102,14 +102,14 @@ Number of histogram features 96
 Number of HOG feature features 972
 Feature vector length: (17760, 1836)
 Using: 9 orientations 16 pixels per cell and 2 cells per block
-## 19.49 Seconds to train SVC...
-## Test Accuracy of SVC =  0.993
-             precision    recall  f1-score   support
+#### 19.49 Seconds to train SVC...
+#### Test Accuracy of SVC =  0.993
+|             |  precision  |   recall |  f1-score  |  support
+|:---------------------:|:----------------------------------:| 
+|    not cars |     0.9918  |   0.9945 |   0.9932   |    1830
+|        cars |     0.9942  |   0.9913 |   0.9927   |    1722
 
-   not cars     0.9918    0.9945    0.9932      1830
-       cars     0.9942    0.9913    0.9927      1722
-
-avg / total     0.9930    0.9930    0.9930      3552
+| avg / total |     0.9930  |   0.9930 |   0.9930   |    3552
 
 
 Parameter 3 was found first but the prediction timer were very slow due to a high amount of features (HOG) that need to be calculated which also results in a complex SVM model. Using also histogram (32 bins) and color binned features (resize to (16,16)) a much faster classifier with even higher accuracy were established.
