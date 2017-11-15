@@ -56,7 +56,7 @@ Here is an example using the `YUV` color space and HOG parameters of `orientatio
 I tried various combinations of parameters and finally I found the parameter above used in YUV colorspace with all color channels. To reach high accuracy of the classifier as well as low prediction times in order to spend more computing for expensive sliding windows. 
 The tables below show several run with different parameters and feature vector sizes. The perfomance of the trained classifier was evaluated by metrics like precicion, recall and f1-score (sk.metrics).
 
-##Parameter 1
+## Parameter 1
 Feature vector length: (17760, 2112)
 Using: 11 orientations 12 pixels per cell and 2 cells per block
 33.72 Seconds to train SVC...
@@ -69,7 +69,7 @@ Test Accuracy of SVC =  0.9716
 avg / total     0.9716    0.9716    0.9716      3552
 
 
-##Parameter 2
+## Parameter 2
 Feature vector length: (17760, 2112)
 Using: 11 orientations 8 pixels per cell and 1 cells per block
 37.28 Seconds to train SVC...
@@ -81,12 +81,12 @@ Test Accuracy of SVC =  0.9727
 
 avg / total     0.9727    0.9727    0.9727      3552
 
-##Parameter 3 (video_1_hog_only)
+## Parameter 3 (video_1_hog_only)
 Number of HOG feature features 6468
 Feature vector length: (17760, 6468)
 Using: 11 orientations 8 pixels per cell and 2 cells per block
-### 114.05 Seconds to train SVC...
-### Test Accuracy of SVC =  0.9834
+## 114.05 Seconds to train SVC...
+## Test Accuracy of SVC =  0.9834
              precision    recall  f1-score   support
 
    not cars     0.9839    0.9833    0.9836      1798
@@ -96,14 +96,14 @@ avg / total     0.9834    0.9834    0.9834      3552
 
 
 
-##Parameter 4 (video_2)
+## Parameter 4 (video_2)
 Number of spatial features 768
 Number of histogram features 96
 Number of HOG feature features 972
 Feature vector length: (17760, 1836)
 Using: 9 orientations 16 pixels per cell and 2 cells per block
-### 19.49 Seconds to train SVC...
-### Test Accuracy of SVC =  0.993
+## 19.49 Seconds to train SVC...
+## Test Accuracy of SVC =  0.993
              precision    recall  f1-score   support
 
    not cars     0.9918    0.9945    0.9932      1830
