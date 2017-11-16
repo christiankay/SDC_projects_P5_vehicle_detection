@@ -203,11 +203,11 @@ I recorded the positions of positive detections in each frame of the video. From
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Detection of cars in camera images in changing conditions is a difficult task. The sliding window method is expensiveand a massive parallelization would be neccassary for real-time applications. And this method is likely to find a lot of false positives, even averaging frames. Maybe more soffiscticated features are needed or even deep learning feature extraction.
+Detection of cars in camera images in changing conditions is a difficult task. The sliding window method is expensiveand a massive parallelization would be neccassary for real-time applications. And this method is likely to find a lot of false positives, even averaging frames. Maybe more sofiscticated "hand crafted" features are needed or even deep learning feature extraction.
 
 The described method is likely to fail in cases where it wasn’t trained for: a bicycle, a pedestrian, trucks, or even in offroad environment.
 
-More cameras (sensor) and other technollogy like car2car communication would help to detect vehicles close to the car.
+More cameras (sensor) and other technology like car-2-car communication would help to detect vehicles close to the car.
 
-I would like to thanks Udacity for providing this high level challenge and valuable guidance on this project. 
+I would like to thank Udacity for providing this high level challenge and avaluable guidance on this term. 
 
