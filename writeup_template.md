@@ -140,18 +140,19 @@ To find cars in an image that has different perspectives were cars could appear 
 | ###Searching of | 39 windows completed### @ scale 1.0               |
 | ###Searching of | 39 windows completed### @ scale 1.0               |
 
-###Searching of  39 windows completed### @ scale 1.0 (64x64 pixel)
-###Searching of  39 windows completed### @ scale 1.0
-###Searching of  39 windows completed### @ scale 1.0
-###Searching of  39 windows completed### @ scale 1.0
-###Searching of  25 windows completed### @ scale 1.5
-###Searching of  25 windows completed### @ scale 1.5
-###Searching of  25 windows completed### @ scale 1.5
-###Searching of  19 windows completed### @ scale 2.0
-###Searching of  19 windows completed### @ scale 2.0
-###Searching of  19 windows completed### @ scale 2.0
-###Searching of  10 windows completed### @ scale 3.5
-###Searching of  10 windows completed### @ scale 3.5
+| ###Searching of | 25 windows completed### @ scale 1.5 |
+|-----------------|-------------------------------------|
+| ###Searching of | 25 windows completed### @ scale 1.5 |
+| ###Searching of | 25 windows completed### @ scale 1.5 |
+
+| ###Searching of | 19 windows completed### @ scale 2.0 |
+|-----------------|-------------------------------------|
+| ###Searching of | 19 windows completed### @ scale 2.0 |
+| ###Searching of | 19 windows completed### @ scale 2.0 |
+
+| ###Searching of | 10 windows completed### @ scale 3.5 |
+|-----------------|-------------------------------------|
+| ###Searching of | 10 windows completed### @ scale 3.5 |
 
 Overall 309 windows
 
