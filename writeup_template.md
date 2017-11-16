@@ -131,7 +131,14 @@ The following image shows the accuracy over the amount of training data used. It
 
 #### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
-To find cars in an image that has different perspectives were cars could appear in one need to search for trained objects in several positions and scales. In this project the follwing setup including 309 windows per image with an overlap of 50% was used. The implemention and corresponding y ranges can be seen in line 722 through 852 in file `obj_detecct.py`. This approach is an adaption of the basic idea by (jeremy-shannon) on github.  
+To find cars in an image that has different perspectives were cars could appear in one need to search for trained objects in several positions and scales. In this project the follwing setup including 309 windows per image with an overlap of 50% was used. The implemention and corresponding y ranges can be seen in line 722 through 852 in file `obj_detecct.py`. This approach is an adaption of the basic idea by (jeremy-shannon) on github.
+
+
+| ###Searching of | 39 windows completed### @ scale 1.0 (64x64 pixel) |
+|-----------------|---------------------------------------------------|
+| ###Searching of | 39 windows completed### @ scale 1.0               |
+| ###Searching of | 39 windows completed### @ scale 1.0               |
+| ###Searching of | 39 windows completed### @ scale 1.0               |
 
 ###Searching of  39 windows completed### @ scale 1.0 (64x64 pixel)
 ###Searching of  39 windows completed### @ scale 1.0
