@@ -160,7 +160,11 @@ Overall 309 windows
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
-Ultimately I searched on four scales using YUV 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
+Ultimately I searched on four scales using YUV 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result. At the I summed up all found car rectangles and produced a heat map based on udacity's suggestion. After that I applied a threshold function based on maximum heatmap values:
+
+
+
+Here are some example images:
 
 ![alt text][image4]
 ---
