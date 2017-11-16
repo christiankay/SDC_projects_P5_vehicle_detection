@@ -22,9 +22,9 @@ The goals / steps of this project are the following:
 [image5]: ./output_images/Majorityvote_07_standarthog.png "Majority vote classifier based on HOG features"
 [image6]: ./output_images/learning_curve.png "Learning curves"
 [image7]: ./output_images/test_all_scales.png "Searching windows"
-[image8]: ./output_images/heat_without_thresh.png
-[image9]: ./output_images/heat_thresh.png
-[image10]: ./output_images/SVM_08_para4.png
+[image8]: ./output_images/heat_without_thresh.png "heat map without threshold"
+[image9]: ./output_images/heat_thresh.png "heat map after thresholding"
+[image10]: ./output_images/SVM_08_para4.png "vehicle detection applied on test images"
 
 [video1]: ./output_images/
 
