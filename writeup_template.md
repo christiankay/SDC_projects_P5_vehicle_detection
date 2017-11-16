@@ -25,7 +25,7 @@ The goals / steps of this project are the following:
 [video1]: ./project_video.mp4
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
-###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
+### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
 ### Writeup / README
@@ -112,32 +112,47 @@ Using: 9 orientations 16 pixels per cell and 2 cells per block
 | avg / total | 0.9930    | 0.9930 | 0.9930   | 3552    |
 
 
-Parameter 3 was found first but the prediction timer were very slow due to a high amount of features (HOG) that need to be calculated which also results in a complex SVM model. Using also histogram (32 bins) and color binned features (resize to (16,16)) a much faster classifier with even higher accuracy were established.
+Parameter 3 was found first but the prediction times were very slow due to a high amount of features (HOG) that needs to be calculated which also results in a complex SVM model. Using histogram features (32 bins) as well as color binned features (resize to (16,16)) a much faster classifier with even higher accuracy were established.
 
 
-#####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
+##### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-I trained a linear SVM using HOG, histogram and spatial features with hight accuracy and fast prediction rates. I've also trained a majority vote classifier based on three different classifier. The MVC was composed of a Logistic regression classifier, a linear SCM and an k-nearest-neightbor classifier. The performance can be seen in the following test images:
+I trained a linear support vector machine using HOG features (line 421 trough 504 within the function `training()`), histogram and spatial features with high accuracy and fast prediction rates. I've also trained a majority vote classifier based on three different classifiers. The MVC was composed of a logistic regression classifier, a linear SVM and an k-nearest-neightbor classifier. The performance can be seen in the following test images:
 
 The metric values might increase a little but on the other hand the system was approxemately two times slower than the single lin-SVM approach. 
 
 bild mit testbilder und 10fold
 
-The following image show the accuracy over amount of training used. It show that it could be possible to slightly increase the accuracy with more training data. Due to the small difference of performance on traing data and test date, I didn't recognize an overfitting problem at this point. 
+The following image shows the accuracy over the amount of training data used. It shows that it might be possible to slightly increase the prediction accuracy with more training data. Due to the small differences between the performance on training data and test data, I didn't recognize an overfitting problem of the model at this point. 
 
 ![alt text][image3]
 
 ### Sliding Window Search
 
-####1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
+#### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
-I decided to search random window positions at random scales all over the image and came up with this (ok just kidding I didn't actually ;):
+To find cars in an image that has different perspectives were cars could appear in one need to search for trained objects in several positions and scales. In this project the follwing setup including 309 windows per image with an overlap of 50% was used. The implemention and corresponding y ranges can be seen in line 722 through 852 in file `obj_detecct.py`. This approach is an adaption of the basic idea by (jeremy-shannon) on github.  
+
+###Searching of  39 windows completed### @ scale 1.0 (64x64 pixel)
+###Searching of  39 windows completed### @ scale 1.0
+###Searching of  39 windows completed### @ scale 1.0
+###Searching of  39 windows completed### @ scale 1.0
+###Searching of  25 windows completed### @ scale 1.5
+###Searching of  25 windows completed### @ scale 1.5
+###Searching of  25 windows completed### @ scale 1.5
+###Searching of  19 windows completed### @ scale 2.0
+###Searching of  19 windows completed### @ scale 2.0
+###Searching of  19 windows completed### @ scale 2.0
+###Searching of  10 windows completed### @ scale 3.5
+###Searching of  10 windows completed### @ scale 3.5
+
+Overall 309 windows
 
 ![alt text][image3]
 
-####2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
+#### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
-Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
+Ultimately I searched on four scales using YUV 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
 
 ![alt text][image4]
 ---
