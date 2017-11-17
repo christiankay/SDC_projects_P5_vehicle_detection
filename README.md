@@ -1,1 +1,0 @@
-# SDC_projects_P5_vehicle_detection
